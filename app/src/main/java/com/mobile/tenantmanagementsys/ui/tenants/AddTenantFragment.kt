@@ -1,14 +1,16 @@
-
-package com.mobile.tenantmanagementsys
+package com.mobile.tenantmanagementsys.ui.tenants
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.mobile.tenantmanagementsys.databinding.FragmentAddTenantBinding
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.mobile.tenantmanagementsys.data.model.Tenant
+import com.mobile.tenantmanagementsys.data.repository.TenantRepository
+import com.mobile.tenantmanagementsys.databinding.FragmentAddTenantBinding
+
 class AddTenantFragment : Fragment() {
 
     private var _binding: FragmentAddTenantBinding? = null

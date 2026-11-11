@@ -1,5 +1,4 @@
-
-package com.mobile.tenantmanagementsys
+package com.mobile.tenantmanagementsys.ui.tenants
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +9,8 @@ import androidx.navigation.fragment.navArgs
 import com.mobile.tenantmanagementsys.databinding.FragmentViewTenantsBinding
 import android.content.Intent
 import android.net.Uri
+import com.mobile.tenantmanagementsys.data.repository.TenantRepository
+
 class ViewTenantsFragment : Fragment() {
 
     private var _binding: FragmentViewTenantsBinding? = null

@@ -1,10 +1,13 @@
-package com.mobile.tenantmanagementsys
+package com.mobile.tenantmanagementsys.ui.auth
+
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.mobile.tenantmanagementsys.ui.main.MainActivity
 import com.mobile.tenantmanagementsys.databinding.ActivityLoginBinding
-import android.net.Uri
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
