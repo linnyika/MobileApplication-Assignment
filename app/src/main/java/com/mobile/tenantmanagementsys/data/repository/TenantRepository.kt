@@ -1,5 +1,6 @@
+package com.mobile.tenantmanagementsys.data.repository
 
-package com.mobile.tenantmanagementsys
+import com.mobile.tenantmanagementsys.data.model.Tenant
 
 object TenantRepository {
 

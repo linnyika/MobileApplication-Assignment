@@ -1,5 +1,4 @@
-
-package com.mobile.tenantmanagementsys
+package com.mobile.tenantmanagementsys.data.model
 
 import java.io.Serializable
 
