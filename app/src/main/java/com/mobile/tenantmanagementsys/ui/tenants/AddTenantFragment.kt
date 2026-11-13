@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.mobile.tenantmanagementsys.ui.viewmodel.TenantViewModel
 import androidx.navigation.fragment.findNavController
-import com.mobile.tenantmanagementsys.data.model.Tenant
-import com.mobile.tenantmanagementsys.data.repository.TenantRepository
 import com.mobile.tenantmanagementsys.databinding.FragmentAddTenantBinding
 
 class AddTenantFragment : Fragment() {
 
     private var _binding: FragmentAddTenantBinding? = null
     private val binding get() = _binding!!
+    // The SHARED ViewModel
+    private val viewModel: TenantViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,13 +35,15 @@ class AddTenantFragment : Fragment() {
 
         binding.saveButton.setOnClickListener {
 
-            // Read the details entered by the user.
-            val name = binding.tenantNameEditText.text.toString().trim()
-            val phone = binding.phoneEditText.text.toString().trim()
-            val rent = binding.rentEditText.text.toString().trim()
+            // UI JOB: collect the input. The ViewModel trims, checks and saves it
+            val tenant = viewModel.addTenant(
+                binding.tenantNameEditText.text.toString(),
+                binding.phoneEditText.text.toString(),
+                binding.rentEditText.text.toString()
+            )
 
-            // Make sure all fields have been filled.
-            if (name.isEmpty() || phone.isEmpty() || rent.isEmpty()) {
+            // null = rejected. UI JOB: tell the user
+            if (tenant == null) {
                 Toast.makeText(
                     requireContext(),
                     "Please fill in all fields",
@@ -49,18 +53,10 @@ class AddTenantFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Create the tenant object.
-            val tenant = Tenant(name, phone, rent)
+            // UI JOB: navigate with Safe Args (unchanged)
+            val action = AddTenantFragmentDirections
+                .actionAddTenantFragmentToViewTenantsFragment(tenant)
 
-            // Store the tenant in the shared repository.
-            TenantRepository.addTenant(tenant)
-
-            // Generate the Safe Args action and pass the tenant.
-            val action =
-                AddTenantFragmentDirections
-                    .actionAddTenantFragmentToViewTenantsFragment(tenant)
-
-            // Navigate to View Tenants.
             findNavController().navigate(action)
         }
 
