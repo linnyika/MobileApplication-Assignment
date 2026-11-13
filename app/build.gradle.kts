@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     id("androidx.navigation.safeargs.kotlin")
-
 }
 android {
     namespace = "com.mobile.tenantmanagementsys"
@@ -58,4 +57,8 @@ dependencies {
     // Allows Fragments to share the same ViewModel
     implementation("androidx.fragment:fragment-ktx:1.8.5")
 
+    // Room: local database library
+    implementation("androidx.room:room-runtime:2.7.2")
+    implementation("androidx.room:room-ktx:2.7.2")
+    annotationProcessor("androidx.room:room-compiler:2.7.2")
 }
