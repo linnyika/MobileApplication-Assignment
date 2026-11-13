@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.activityViewModels
+import com.mobile.tenantmanagementsys.ui.viewmodel.TenantViewModel
 import com.mobile.tenantmanagementsys.databinding.FragmentViewTenantsBinding
 import android.content.Intent
 import android.net.Uri
-import com.mobile.tenantmanagementsys.data.repository.TenantRepository
 
 class ViewTenantsFragment : Fragment() {
 
@@ -18,6 +19,8 @@ class ViewTenantsFragment : Fragment() {
 
     // Receive the arguments passed through Safe Args.
     private val args: ViewTenantsFragmentArgs by navArgs()
+    // The SHARED ViewModel: every Fragment in MainActivity gets the SAME one
+    private val viewModel: TenantViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,15 +60,9 @@ class ViewTenantsFragment : Fragment() {
                 startActivity(intent)
             }
         }
-        // Display every tenant stored in the repository.
-        val tenants = TenantRepository.tenants
-
-        if (tenants.isEmpty()) {
-            binding.allTenantsTextView.text =
-                "No tenants yet. Add one from the Dashboard."
-        } else {
-            binding.allTenantsTextView.text =
-                tenants.joinToString("\n\n") { it.summary() }
+        // Display every tenant stored in the repository. OBSERVER: runs now, and again every time allTenantsText changes
+        viewModel.allTenantsText.observe(viewLifecycleOwner) { text ->
+            binding.allTenantsTextView.text = text
         }
     }
 
