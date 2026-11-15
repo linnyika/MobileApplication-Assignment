@@ -24,7 +24,7 @@ The app separates screen code from data and storage code:
 | Member | Admission number | Contribution / PR |
 |---|---:|---|
 | Linda Nyika | 191329 | [Organise code into ui and data packages](https://github.com/linnyika/MobileApplication-Assignment/pull/1) |
-| Abasa Emmanuel | 131805 | Stage 6 release work — PR pending |
+| Abasa Emmanuel | 131805 | [PR #6](https://github.com/linnyika/MobileApplication-Assignment/pull/6) |
 | Joy Gitau | 193344 | [Stage 2: TenantViewModel](https://github.com/linnyika/MobileApplication-Assignment/pull/2) |
 | Grace Waithera | 190433 | [features/screens](https://github.com/linnyika/MobileApplication-Assignment/pull/4) |
 | Tracy Karuga | 172066 | [Stage 5: Integrate Room Database](https://github.com/linnyika/MobileApplication-Assignment/pull/5) |
